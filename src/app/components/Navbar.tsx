@@ -4,7 +4,7 @@ import Link from "next/link";
 import { navLinks } from "../data/navLinks";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
-import { clsx } from "clsx";
+// import { clsx } from "clsx";
 
 const Navbar = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
