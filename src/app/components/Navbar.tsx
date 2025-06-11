@@ -10,7 +10,7 @@ const Navbar = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between px-5 md:px-20 items-center py-5">
+    <nav className="flex justify-between px-5 md:px-20 items-center py-5 select-none">
       <div className="font-space-grotesk text-white text-xl">OV</div>
 
       {/* Desktop Nav */}

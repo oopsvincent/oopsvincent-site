@@ -7,6 +7,9 @@ export default function Home() {
     <main>
         <Navbar />
         <Hero />
+        <footer className="text-center">
+            &copy; 2025 OOPSVINCENT
+        </footer>
     </main>
   );
 }
