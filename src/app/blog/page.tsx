@@ -1,5 +1,8 @@
 // app/blog/page.tsx
+import { getCategorisedArticles } from "@/lib/blog";
 import { Metadata } from "next";
+
+import ArticleListItem from "@/components/ArticleListItem";
 
 export const metadata: Metadata = {
   title: "Blog | oopsvincent",
@@ -7,6 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+    const articles = getCategorisedArticles()
+
+    console.log(articles);
+    
+
   return (
     <main className="min-h-screen px-5 md:px-20 py-10">
       <h1 className="text-4xl font-bold font-space-grotesk mb-6">Blog</h1>
@@ -15,7 +23,15 @@ export default function BlogPage() {
       </p>
 
       {/* Placeholder for future blog posts */}
-      <div className="text-sm text-gray-600">No blog posts yet. Stay tuned.</div>
+      <div className="flex flex-wrap gap-10">
+        {articles != null && Object.keys(articles).map((article) => (
+            <ArticleListItem
+                category={article}
+                articles={articles[article]}
+                key={article}
+            />
+        ))}
+      </div>
     </main>
   );
 }

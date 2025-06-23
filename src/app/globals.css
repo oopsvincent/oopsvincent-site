@@ -25,3 +25,17 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+/* 
+@theme inline {
+    } */
+    .article {
+        @apply flex flex-col gap-3 font-inter text-lg tracking-wide mb-20
+    }
+    
+    .article > h1{
+        @apply text-4xl font-space-grotesk tracking-tight text-center my-5
+    }
+    
+    .article > p {
+        @apply text-lg font-inter
+    }
