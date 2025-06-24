@@ -1,15 +1,20 @@
+// src/app/blog/[slug]/page.tsx
+
 import Link from "next/link";
+
 import { ArrowLeftIcon } from "lucide-react";
+
 import { getArticlesData } from "@/lib/blog";
 
-interface ArticlePageProps {
-  params: {
+type Props = {
+  params: Promise<{
     slug: string;
-  };
-}
+  }>;
+};
 
-export default async function Article({ params }: ArticlePageProps) {
-  const articleData = await getArticlesData(params.slug);
+export default async function Article({ params }: Props) {
+  const { slug } = await params;
+  const articleData = await getArticlesData(slug);
 
   return (
     <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
