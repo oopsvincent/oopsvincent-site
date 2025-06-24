@@ -51,21 +51,30 @@ export const getCategorisedArticles = (): Record<string, ArticleItem[]> => {
 
 export const getArticlesData = async (id: string) => {
   const fullPath = path.join(articlesDirectory, `${id}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, "utf-8");
+  
+  // Check if file exists
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Article with id "${id}" not found`);
+  }
+  
+  try {
+    const fileContents = fs.readFileSync(fullPath, "utf-8");
+    const matterResult = matter(fileContents);
 
-  const matterResult = matter(fileContents);
+    const processedContent = await remark()
+      .use(html)
+      .process(matterResult.content);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
+    const contentHTML = processedContent.toString();
 
-  const contentHTML = processedContent.toString();
-
-  return {
-    id,
-    contentHTML,
-    title: matterResult.data.title,
-    date: moment(matterResult.data.date).format("MMMM D, YYYY"), // display format
-    category: matterResult.data.category,
-  };
+    return {
+      id,
+      contentHTML,
+      title: matterResult.data.title,
+      date: moment(matterResult.data.date).format("MMMM D, YYYY"),
+      category: matterResult.data.category,
+    };
+  } catch (error) {
+    throw new Error(`Error reading article "${id}": ${error}`);
+  }
 };
