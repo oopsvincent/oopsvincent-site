@@ -1,17 +1,16 @@
-// import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { getArticlesData } from "@/lib/blog";
 
-// ✅ Correct typing for App Router dynamic route
-type PageProps = {
+interface ArticlePageProps {
   params: {
     slug: string;
   };
-};
+}
 
-const Article = async ({ params }: PageProps) => {
-  const articleData = await getArticlesData(params.slug);
+export default async function Article(props: ArticlePageProps) {
+  const { slug } = await props.params;
+  const articleData = await getArticlesData(slug);
 
   return (
     <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
@@ -28,6 +27,4 @@ const Article = async ({ params }: PageProps) => {
       />
     </section>
   );
-};
-
-export default Article;
+}

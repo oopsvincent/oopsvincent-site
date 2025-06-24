@@ -3,59 +3,76 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { navLinks } from "../data/navLinks";
 import { Menu } from "lucide-react";
-import { motion } from "framer-motion";
-// import { clsx } from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeSwitch";
 
 const Navbar = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between px-5 md:px-20 items-center py-5 select-none">
-      <div className="font-space-grotesk text-white text-xl">OV</div>
+    <nav className="relative flex justify-between items-center px-5 md:px-20 py-5 select-none">
+      {/* Logo */}
+      <div className="font-space-grotesk text-xl text-foreground">
+        <Link href="/">OV</Link>
+      </div>
 
       {/* Desktop Nav */}
-      <ul className="hidden sm:flex list-none gap-5 font-inter text-white">
-        {navLinks.map((item, index) => (
-          <li key={index}>
-            <Link
-              href={item.href}
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/* Mobile Menu Icon */}
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setNavIsOpen((prev) => !prev)}
-        className="sm:hidden text-white"
-      >
-        <Menu size={32} />
-      </motion.button>
-
-      {/* Mobile Nav Dropdown */}
-      {navIsOpen && (
-        <motion.ul
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-16 left-0 right-0 bg-black p-5 flex flex-col gap-4 sm:hidden z-50"
-        >
+      <div className="hidden sm:flex items-center gap-6 font-inter">
+        <ul className="flex list-none gap-5 text-sm">
           {navLinks.map((item, index) => (
             <li key={index}>
               <Link
                 href={item.href}
-                className="text-gray-300 hover:text-white"
-                onClick={() => setNavIsOpen(false)} // Close menu after click
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {item.name}
               </Link>
             </li>
           ))}
-        </motion.ul>
-      )}
+        </ul>
+        {/* Theme Toggle on Desktop */}
+        <ThemeToggle />
+      </div>
+
+      {/* Mobile Menu Icon */}
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setNavIsOpen((prev) => !prev)}
+        className="sm:hidden text-foreground z-50"
+        aria-label="Toggle mobile menu"
+      >
+        <Menu size={28} />
+      </motion.button>
+
+      {/* Mobile Nav Dropdown */}
+      <AnimatePresence>
+        {navIsOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-16 left-0 right-0 bg-background border-t border-border px-5 py-6 flex flex-col gap-5 sm:hidden z-40"
+          >
+            <ul className="flex flex-col gap-3 text-base font-inter">
+              {navLinks.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    href={item.href}
+                    className="text-muted-foreground hover:text-foreground transition"
+                    onClick={() => setNavIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {/* Theme Toggle on Mobile */}
+            <div className="pt-2 border-t border-border">
+              <ThemeToggle />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
