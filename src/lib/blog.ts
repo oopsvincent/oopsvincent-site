@@ -32,7 +32,7 @@ const getSortedArticle = (): ArticleItem[] => {
   // Sort by the Date object, then remove it from the final result
   return allArticlesData
     .sort((a, b) => b.dateObj.getTime() - a.dateObj.getTime())
-    .map(({ dateObj, ...article }) => article); // remove dateObj from final result
+    .map(({ ...article }) => article); // remove dateObj from final result
 };
 
 export const getCategorisedArticles = (): Record<string, ArticleItem[]> => {
