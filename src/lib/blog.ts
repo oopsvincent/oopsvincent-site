@@ -18,16 +18,21 @@ const getSortedArticle = (): ArticleItem[] => {
     const fileContents = fs.readFileSync(fullPath, "utf-8");
 
     const matterResult = matter(fileContents);
+    const dateObj = new Date(matterResult.data.date);
 
     return {
       id,
       title: matterResult.data.title,
-      date: new Date(matterResult.data.date), // convert to actual Date object
+      date: moment(dateObj).format("MMMM D, YYYY"), // convert to string format
       category: matterResult.data.category,
+      dateObj, // keep Date object for sorting
     };
   });
 
-  return allArticlesData.sort((a, b) => b.date.getTime() - a.date.getTime()); // newest first
+  // Sort by the Date object, then remove it from the final result
+  return allArticlesData
+    .sort((a, b) => b.dateObj.getTime() - a.dateObj.getTime())
+    .map(({ dateObj, ...article }) => article); // remove dateObj from final result
 };
 
 export const getCategorisedArticles = (): Record<string, ArticleItem[]> => {
