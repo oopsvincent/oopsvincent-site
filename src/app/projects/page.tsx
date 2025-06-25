@@ -10,19 +10,29 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const itchProjects = await getItchProjects("oopsvincent", process.env.ITCH_API_KEY!);
+  const itchProjects = await getItchProjects(
+    "oopsvincent",
+    process.env.ITCH_API_KEY!
+  );
   const allProjects = [...customProjects, ...itchProjects];
 
   return (
     <main className="min-h-screen px-5 md:px-20 py-10">
       <h1 className="text-4xl font-bold font-space-grotesk mb-6">Projects</h1>
       <p className="text-muted-foreground max-w-xl mb-10">
-        A growing archive of creations—games, tools, websites, experiments, and prototypes.
+        A growing archive of creations—games, tools, websites, experiments, and
+        prototypes.
       </p>
 
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {allProjects.map((proj) => (
-          <ProjectCard key={proj.id} {...proj} />
+          <ProjectCard
+            key={proj.id}
+            title={proj.title}
+            cover_url={proj.cover_url}
+            description={proj.short_text}
+            url={proj.url}
+          />
         ))}
       </div>
     </main>
