@@ -1,9 +1,7 @@
 // src/app/blog/[slug]/page.tsx
-
 import Link from "next/link";
-
+import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "lucide-react";
-
 import { getArticlesData } from "@/lib/blog";
 
 type Props = {
@@ -14,7 +12,16 @@ type Props = {
 
 export default async function Article({ params }: Props) {
   const { slug } = await params;
-  const articleData = await getArticlesData(slug);
+  
+  let articleData;
+  
+  try {
+    articleData = await getArticlesData(slug);
+  } catch (error) {
+    // If the article doesn't exist, trigger the not-found page
+    notFound();
+    console.log(error);
+  }
 
   return (
     <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
