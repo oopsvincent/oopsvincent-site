@@ -61,23 +61,24 @@ const Navbar = () => {
                   key={index}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="relative"
                 >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-gradient-to-r from-primary/15 to-accent/15 rounded-full border border-primary/25"
+                      transition={{ type: "spring", duration: 0.6 }}
+                    />
+                  )}
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    className={`relative z-10 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                       isActive
-                        ? "text-primary bg-primary/10 backdrop-blur-sm"
+                        ? "text-primary font-semibold"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                   >
                     {item.name}
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full backdrop-blur-sm border border-primary/20"
-                        transition={{ type: "spring", duration: 0.6 }}
-                      />
-                    )}
                   </Link>
                 </motion.div>
               );
@@ -132,7 +133,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 shadow-xl"
+            className="font-space-grotesk md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 shadow-xl"
           >
             <div className="max-w-7xl mx-auto px-4 py-6">
               <div className="flex flex-col space-y-2">
