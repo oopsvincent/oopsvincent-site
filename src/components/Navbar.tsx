@@ -32,18 +32,32 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo with hover effect */}
+          {/* Logo with infinite shine animation */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative"
+            className="relative overflow-hidden"
           >
             <Link
               href="/"
-              className="font-space-grotesk text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent hover:from-primary hover:to-primary/70 transition-all duration-300"
+              className="font-space-grotesk text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent hover:from-primary hover:to-primary/70 transition-all duration-300 relative"
             >
               OV
+              {/* Subtle infinite shine overlay */}
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                initial={{ x: "-100%" }}
+                animate={{ x: "100%" }}
+                transition={{
+                  duration: 2.5,
+                  ease: "linear",
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+                style={{ mixBlendMode: "overlay" }}
+              />
             </Link>
+
             <motion.div
               className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
               initial={{ width: 0 }}
@@ -83,7 +97,7 @@ const Navbar = () => {
                 </motion.div>
               );
             })}
-            
+
             {/* Theme Toggle with separator */}
             <div className="flex items-center ml-4 pl-4 border-l border-border/50">
               <ThemeToggle />
@@ -172,7 +186,7 @@ const Navbar = () => {
                     </motion.div>
                   );
                 })}
-                
+
                 {/* Mobile Theme Toggle */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
