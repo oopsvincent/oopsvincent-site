@@ -39,21 +39,21 @@ export default function ContactPage() {
           <div className="flex items-center gap-3">
             <Mail size={18} />
             <Link
-              href="mailto:contact@oopsvincent.com"
+              href="mailto vincentadambrown@gmail.com"
               className="hover:text-white transition"
             >
-              contact@oopsvincent.com
+              E-mail
             </Link>
           </div>
 
           <div className="flex items-center gap-3">
             <Linkedin size={18} />
             <Link
-              href="https://linkedin.com/in/oopsvincent"
+              href="https://linkedin.com/in/farhanalireza"
               target="_blank"
               className="hover:text-white transition"
             >
-              linkedin.com/in/oopsvincent
+              linkedin.com/in/farhanalireza
             </Link>
           </div>
 
