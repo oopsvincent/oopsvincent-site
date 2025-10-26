@@ -58,7 +58,7 @@ export default function Home() {
             Now
           </Link>
           <Link
-            href="https://LinkedIn.com/in/farhanalireza"
+            href="/contact"
  target="_blank"
             className="bg-gray-100 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-white transition"
           >
