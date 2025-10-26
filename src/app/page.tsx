@@ -38,6 +38,7 @@ export default function Home() {
           </p>
 
           <div className="flex flex-wrap gap-4">
+{/*
             <Link
               href="/about"
               className="border border-gray-700 px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
@@ -56,7 +57,7 @@ export default function Home() {
               className="bg-gray-100 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-white transition"
             >
               Collaborate
-            </Link>
+            </Link> */}
           </div>
         </div>
 
