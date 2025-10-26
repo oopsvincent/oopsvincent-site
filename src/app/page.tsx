@@ -1,13 +1,13 @@
 // app/page.tsx
 import Link from "next/link";
-// import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col justify-between">
+    <main className="min-h-screen flex flex-col justify-between bg-gradient-to-b from-black via-gray-950 to-black">
       {/* Hero Section */}
       <section className="px-6 md:px-20 pt-20 pb-10">
-       {/* <Hero /> */}
+       <Hero />
 
         <div className="mt-10 max-w-2xl text-gray-400">
           <h1 className="text-4xl md:text-5xl font-space-grotesk font-bold mb-6">
