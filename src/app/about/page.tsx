@@ -37,6 +37,18 @@ export default function AboutPage() {
         and personal growth into one cohesive system. It is part application, part philosophy, and reflects where I am heading as a builder and a person.
       </p>
 
+<p className="text-gray-500 max-w-2xl mb-10">
+        Beyond technology, I have a growing passion for business, leadership, and financial strategy.
+        I believe true innovation lives at the intersection of creativity and commerce—where ideas not only inspire, but sustain.
+        Leading teams, sharing ideas, and helping others grow is where I find purpose and momentum.
+      </p>
+
+      <p className="text-gray-500 max-w-2xl mb-10">
+        Over time, I aim to build a strong network of creators, entrepreneurs, and thinkers who share the same drive for meaningful impact.
+        My long-term vision extends beyond individual projects—it’s about building systems, ventures, and communities that last.
+        Recognition will follow in due time; for now, I’m focused on building substance before status.
+      </p>
+
       <p className="text-gray-500 max-w-2xl mb-10">
         My long-term vision is to evolve this into a creative-tech studio that merges product design, wellness, and human-centered innovation.
       </p>
@@ -84,18 +96,6 @@ export default function AboutPage() {
         <li>Connecting with developers, creatives, and founders</li>
         <li>Learning from those who have built things that matter</li>
       </ul>
-
-<p className="text-gray-500 max-w-2xl mb-10">
-        Beyond technology, I have a growing passion for business, leadership, and financial strategy.
-        I believe true innovation lives at the intersection of creativity and commerce—where ideas not only inspire, but sustain.
-        Leading teams, sharing ideas, and helping others grow is where I find purpose and momentum.
-      </p>
-
-      <p className="text-gray-500 max-w-2xl mb-10">
-        Over time, I aim to build a strong network of creators, entrepreneurs, and thinkers who share the same drive for meaningful impact.
-        My long-term vision extends beyond individual projects—it’s about building systems, ventures, and communities that last.
-        Recognition will follow in due time; for now, I’m focused on building substance before status.
-      </p>
     </main>
   );
 }
