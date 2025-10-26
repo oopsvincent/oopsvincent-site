@@ -1,81 +1,117 @@
-// app/page.tsx
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
-import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col justify-between bg-gradient-to-b from-black via-gray-950 to-black">
+    <main className="min-h-screen flex flex-col justify-between bg-gradient-to-b from-black via-[#090909] to-black">
       {/* Hero Section */}
-      <section className="px-6 md:px-20 pt-20 pb-10">
-       <Hero />
+      <section className="flex flex-col justify-center px-6 md:px-20 pt-24 pb-16 min-h-[85vh]">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-5xl md:text-7xl font-space-grotesk font-black tracking-tight leading-tight"
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400">
+            Farhan / oopsvincent
+          </span>
+        </motion.h1>
 
-        <div className="mt-10 max-w-2xl text-gray-400">
-          <h1 className="text-4xl md:text-5xl font-space-grotesk font-bold mb-6">
-            Building Systems That Outlast Trends.
-          </h1>
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-gray-400 font-inter mt-4 text-lg md:text-xl"
+        >
+          Web Developer · Systems Thinker · Builder of Human-Centered Products
+        </motion.h2>
 
-          <p className="text-lg text-gray-400 mb-6">
-            I’m Farhan — also known as <strong>oopsvincent</strong> — a web developer, systems designer, 
-            and student of Computer Science & Technology. I’m deeply focused on creating digital products that 
-            help people grow — not just productively, but personally.
-          </p>
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="max-w-2xl mt-6 text-gray-500 text-base md:text-lg"
+        >
+          Currently creating <strong>Rhythmé</strong> — a platform designed to help people align their 
+          habits, mental clarity, and personal growth into one cohesive system.  
+          Focused on merging design, technology, and purpose.
+        </motion.p>
 
-          <p className="text-gray-500 mb-6">
-            Currently, I’m developing <Link href="/rhythme" className="underline hover:text-gray-300 transition">
-              Rhythmé
-            </Link>, a human-centered productivity and well-being platform designed to align daily discipline, 
-            focus, and personal transformation.
-          </p>
-
-          <p className="text-gray-500 mb-6">
-            My long-term vision is to evolve this work into a creative-tech studio that merges technology, 
-            design, and human purpose — building experiences that endure beyond algorithms, hype, and noise.
-          </p>
-
-          <p className="text-gray-500 mb-8">
-            Alongside product development, I’m learning the architecture of business, finance, and leadership — 
-            building the mindset and network for the next decade of creation.
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-{/*
-            <Link
-              href="/about"
-              className="border border-gray-700 px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
-            >
-              About
-            </Link>
-            <Link
-              href="/now"
-              className="border border-gray-700 px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
-            >
-              Now
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/farhanalireza/"
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, delay: 0.4 }}
+          className="flex flex-wrap gap-4 mt-8"
+        >
+          <Link
+            href="/about"
+            className="border border-gray-700 px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
+          >
+            About
+          </Link>
+          <Link
+            href="/now"
+            className="border border-gray-700 px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
+          >
+            Now
+          </Link>
+          <Link
+            href="https://LinkedIn.com/in/farhanalireza"
  target="_blank"
-              className="bg-gray-100 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-white transition"
-            >
-              Collaborate
-            </Link> */}
-          </div>
-        </div>
+            className="bg-gray-100 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-white transition"
+          >
+            Collaborate
+          </Link>
+        </motion.div>
+      </section>
 
-        {/* Optional Current Focus Section */}
-        <div className="mt-20 border-t border-gray-800 pt-10 max-w-2xl text-gray-400">
-          <h2 className="text-2xl font-semibold mb-4">Current Focus</h2>
-          <ul className="list-disc pl-6 text-gray-500 space-y-2">
-            <li>Developing and refining the <strong>Rhythmé</strong> ecosystem.</li>
-            <li>Strengthening leadership and business acumen for future ventures.</li>
-            <li>Documenting my process, principles, and growth across disciplines.</li>
-            <li>Building long-term collaborations and networks that align with purpose.</li>
-          </ul>
-        </div>
+      {/* Divider / Transition */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="h-[1px] bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-6 md:mx-20"
+      />
+
+      {/* Current Focus Section */}
+      <section className="px-6 md:px-20 py-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-2xl font-semibold text-gray-200 mb-6"
+        >
+          Current Focus
+        </motion.h2>
+
+        <motion.ul
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="list-disc pl-6 text-gray-500 space-y-3 max-w-2xl"
+        >
+          <li>
+            Building and refining <strong>Rhythmé</strong> — a human-centered productivity ecosystem integrating 
+            discipline, reflection, and balance.
+          </li>
+          <li>
+            Deepening my foundation in <strong>business strategy</strong>, <strong>finance</strong>, and <strong>leadership</strong> 
+            to prepare for long-term ventures.
+          </li>
+          <li>
+            Expanding my <strong>network</strong> by connecting with visionaries, developers, and founders across the globe.
+          </li>
+          <li>
+            Documenting lessons, frameworks, and reflections for future creators and entrepreneurs.
+          </li>
+        </motion.ul>
       </section>
 
       {/* Footer */}
       <footer className="text-center py-6 text-gray-500 border-t border-gray-800 text-sm">
-        &copy; 2025 OOPSVINCENT — Built with purpose, patience, and precision.
+        &copy; 2025 OOPSVINCENT — Built with Purpose, Patience, and Precision.
       </footer>
     </main>
   );
