@@ -55,7 +55,8 @@ const Hero = () => {
           Now
         </Link>
         <Link
-          href="/contact"
+                        href="https://www.linkedin.com/in/farhanalireza/"
+ target="_blank"
           className="bg-gray-100 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-white transition"
         >
           Collaborate
