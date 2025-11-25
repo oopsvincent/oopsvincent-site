@@ -50,7 +50,7 @@ export default function Navbar() {
               onClick={closeMobileMenu}
               className="text-2xl font-space-grotesk font-bold hover:opacity-80 transition-opacity"
             >
-              Your Name
+              FAR
             </Link>
 
             {/* Desktop Navigation */}
