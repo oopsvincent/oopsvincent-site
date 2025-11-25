@@ -1,0 +1,141 @@
+---
+title: "How I made this site"
+slug: "how-i-made-this-site"
+summary: "How I started writing blogs with MDX and Next.js."
+date: "2025-06-19"
+tags: ["nextjs", "mdx", "blog"]
+category: "Tutorials"
+---
+
+# How I made this Portfolio Site
+
+Hey folks! 👋  
+In this post, I’m taking you behind the scenes of how I built this portfolio/blog site using **Next.js**, **App Router**, and **MDX** — and how I almost lost my mind configuring `dark mode` (but we don't talk about that 😅).
+
+
+## 🧠 The Stack
+
+Here’s the tech I used:
+
+- **Next.js 14** — App Router, server components, and layout nesting.
+- **MDX** — For blog content because who doesn’t want Markdown + React?
+- **Tailwind CSS** — For utility-first styling without breaking a sweat.
+- **Framer Motion** — For spicy UI transitions.
+- **Custom Dark/Light Theme** — With pure CSS variables.
+
+---
+
+## 🛠️ Project Setup
+
+I kicked things off with:
+
+```bash
+npx create-next-app@latest oopsvincent --ts --app
+````
+
+Enabled Tailwind with:
+
+```bash
+npx tailwindcss init -p
+```
+
+And replaced the entire Tailwind config with **nothing**… because I’m managing all variables via `globals.css` (yes, I live on the edge).
+
+---
+
+## 📁 Directory Structure
+
+I went with a clean structure to keep things modular:
+
+```
+/src
+  /app
+    /blog
+      [slug]/page.tsx
+      page.tsx
+    layout.tsx
+  /components
+  /content
+  /lib
+  /types
+```
+
+All blog posts live in `/src/content`, written in `.mdx` files. I parse them using `gray-matter` and render them with `remark-html`.
+
+---
+
+## ✍️ Writing Blogs with MDX
+
+Each blog post has frontmatter like this:
+
+```mdx
+---
+title: "My First Blog"
+slug: "my-first-blog"
+summary: "I made a blog!"
+date: "2025-06-18"
+tags: ["blog", "nextjs"]
+category: "Personal"
+---
+```
+
+Then I use `gray-matter` to extract metadata and `remark` to turn Markdown into HTML. Easy-peasy.
+
+---
+
+## 🌗 Dark/Light Mode
+
+My theme toggler is powered by **CSS variables** and localStorage. I avoided Tailwind’s `dark:` classes for cleaner control. I use:
+
+```css
+:root {
+  --background: #fff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+```
+
+Then, JS toggles a `theme` class on `<html>`. Boom. No plugin hell.
+
+---
+
+## 🧩 Reusable Components
+
+The site uses reusable components like:
+
+* `Navbar` with mobile/desktop logic
+* `ArticleListItem` to render posts by category
+* `ThemeToggle` to switch themes without crying
+* `BlogLayout` (coming soon 👀)
+
+---
+
+## ⚙️ Challenges
+
+* The **dynamic route bug** (`params.slug must be awaited`) wasted 3 hours of my life. I survived by adding a useless `await` that mysteriously fixed it 🤡
+* Moment.js complained about my date format. Solved by using `YYYY-MM-DD` in my frontmatter and never touching `moment().format()` before `.toISOString()` again.
+* Balancing design consistency with Tailwind freedom… still an art.
+
+---
+
+## 🎯 What's Next?
+
+* Add a search bar to filter blogs by title or tag
+* Support image embeds and syntax highlighting
+* Analytics (but only the non-creepy kind)
+* Maybe RSS? Still debating like a French philosopher in a café.
+
+---
+
+## ❤️ Final Thoughts
+
+This site is my digital home. A place to share stories, tech, and progress as I build toward my dreams. If you’re reading this — thanks. And if you’re building something too, I’m rooting for you. Hard.
+
+Stay curious,
+**oopsvincent** 🧡
